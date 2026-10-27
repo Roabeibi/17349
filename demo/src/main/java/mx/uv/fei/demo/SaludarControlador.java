@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins = "*") // Permitir solicitudes desde el origen especificado
 @RestController
 public class SaludarControlador {
     String nombre;
@@ -98,6 +100,9 @@ return nombre + " " + paterno + " " + materno;}
             <li><a href="/saludos2/Maria">Saludar con PathVariable Maria (/saludos2/Maria)</a></li>
             <li><a href="/query1?nombre=Juan&paterno=Perez&materno=Gomez">Probar Parámetro Query con varios valores (/query1?nombre=Juan&paterno=Perez&materno=Gomez)</a></li>
             <li><a href="/query2">Probar Parámetro Query con valor (/query2?nombre=Alejandro)</a></li>
+            <li><a href="/crearSaludador">Crear Saludador (/crearSaludador)</a></li>
+            <li><a href="/obtenerSaludador">Obtener Saludador (/obtenerSaludador)</a></li>
+            
         </ul>
         <p><strong>Nota técnica:</strong> Las rutas asociadas a <code>POST</code>, <code>PUT</code> y <code>DELETE</code> (como <em>/nombramientos</em>, <em>/crearSaludador</em> o <em>/obtenerSaludador</em>) requieren de herramientas externas de pruebas API como Postman o cURL para enviar cuerpos JSON de datos estructurados, debido a que los hipervínculos del navegador estándar ejecutan de forma exclusiva peticiones de tipo HTTP GET.</p>
         """;
