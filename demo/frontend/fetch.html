@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API Example</title>
+    </head>
+
+    <body>
+        <h1>Api fetch</h1>
+        <button onclick="llamar()">fetch</button>
+        <button onclick="llamar2()">AJAX</button>
+        <button onclick="llamar3()">Fetch async/await</button>
+
+        <script>
+            function llamar (){
+                let URL = "http://jsonplaceholder.typicode.com/users/1";
+                let parametros = ""
+                
+                fetch (URL)
+                .then(respuesta => {
+                    console.log(respuesta);
+                    datos = respuesta.json();
+                    console.log(datos);
+                    return datos
+                })
+                .then(datos => {
+                    console.log(datos);
+                }) 
+                .catch(error => {
+                    console.log("ojo:" +error);
+                });
+            }
+
+
+            function llamar2() {
+                var xhr = new XMLHttpRequest();
+                xhr.onload = respuesta => {
+                    console.log(JSON.parse(xhr.responseText)); 
+                };
+                xhr.open("GET","http://jsonplaceholder.typicode.com/users/1", true);
+                xhr.send();
+            }
+
+            function llamar3 (){
+                let URL = "http://jsonplaceholder.typicode.com/users/1";
+                
+                fetch (URL)
+                .then(async respuesta => {
+                    console.log(respuesta);
+                    const datos = await respuesta.json();
+                    console.log(datos);
+                }) 
+                .catch(error => {
+                    console.log("ojo:" +error);
+                });
+            }
+        </script>
+    
+    </body>    
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html >
+<html lang="es"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ObtenerSaludador</title>
+    </head>
+
+    <body>
+        <h1>ObtenerSaludador </h1>
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="usuario">
+        <button onclick ="Obtener()">Obtener</button>
+        <script>
+            usuario = document.getElementById("usuario")
+            function obtener(){
+                url = "http://localhost:8081/obtenerSaludador";
+                fetch (url)
+                .then(respuesta => {
+                    return respuesta.json()
+                })
+                .then((datos) => {
+                    usuario.value = datos;
+                    console.log(datos)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            }
+        </script>
